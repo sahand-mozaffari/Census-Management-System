@@ -7,7 +7,7 @@ public class UserInterface {
 
 	public static void run() {
 		while(true) {
-			askOptions("Enter command", new Option[]{Option.GetByKey, Option.Exit});
+			askOptions("Enter command", new Option[]{Option.GetByKey, Option.SetByKey, Option.Exit});
 		}
 	}
 
@@ -67,9 +67,10 @@ public class UserInterface {
 				System.err.println("Not a valid number!");
 				continue;
 			} else if(str.contains("."))
-				return Long.parseLong(str);
-			else
 				return Double.parseDouble(str);
+			else {
+				return Long.parseLong(str);
+			}
 		}
 	}
 }

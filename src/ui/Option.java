@@ -34,6 +34,24 @@ enum Option {
 			else
 				System.err.println("Data not available!");
 		}
+	},
+
+	SetByKey {
+		@Override
+		public String toString() {
+			return "Update data by population, country, feature and year.";
+		}
+
+		@Override
+		void trigger() {
+			String population = CsvParser.populations[UserInterface.askStrings("Choose the sampling population: ", CsvParser.populations)];
+			String features = CsvParser.features[UserInterface.askStrings("Choose a feature: ", CsvParser.features)];
+			String country = UserInterface.askString("Choose the country: ");
+			String year = UserInterface.askString("Choose a year: ");
+			Number value = UserInterface.askNumber("Choose a year: ");
+			DataManager.singleton().put(population, features, country, year, value);
+			System.out.println("Data was updated.");
+		}
 	};
 
 	abstract void trigger();
