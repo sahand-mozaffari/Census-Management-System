@@ -26,7 +26,7 @@ enum Option {
 		void trigger() {
 			String population = CsvParser.populations[UserInterface.askStrings("Choose the sampling population: ", CsvParser.populations)];
 			String features = CsvParser.features[UserInterface.askStrings("Choose a feature: ", CsvParser.features)];
-			String country = UserInterface.askString("Choose the country: ");
+			String country = UserInterface.askString("Choose the country: ").toLowerCase();
 			String year = UserInterface.askString("Choose a year: ");
 			Number result = DataManager.singleton().get(population, features, country, year);
 			if(result != null)
