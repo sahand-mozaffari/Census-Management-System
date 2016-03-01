@@ -79,7 +79,7 @@ enum Option {
 				male[i - start] = DataManager.singleton().get(populationMale, features, country, String.valueOf(i));
 				female[i - start] = DataManager.singleton().get(populationFemale, features, country,String.valueOf(i));
 			}
-			CreateChartHelper.create(features, male, female);
+			CreateChartHelper.create(country, features, male, female);
 			}catch(NullPointerException e){
 				System.err.println("Data not available!");
 			}
