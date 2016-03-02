@@ -38,9 +38,17 @@ public class UserInterface {
 		opt.trigger();
 		return opt;
 	}
+	
+	static String getOption(String question){
+		Scanner stdin = new Scanner(System.in);
+		System.out.println(question + "(0 - > help)");
+		return stdin.nextLine();
+	}
 
 	static int askStrings(String question, String[] options) {
 		while(true) {
+			int ind = Integer.parseInt(getOption(question));
+			if(ind == 0){
 			StringBuilder sb = new StringBuilder(question);
 			sb.append("\n");
 			for(int i = 0; i < options.length; ++i) {
@@ -51,13 +59,16 @@ public class UserInterface {
 				sb.append("\n");
 			}
 			sb.append(PROMPT);
-
-			int ind = (int) askLong(sb.toString());
-			if(ind < 1 || ind > options.length) {
+		
+			ind = (int) askLong(sb.toString());
+		
+			if(ind != 0 && (ind < 1 || ind > options.length)) {
 				System.err.println("Not a valid option!");
 				continue;
 			}
+			}
 			return ind - 1;
+			
 		}
 	}
 
