@@ -15,6 +15,26 @@ enum Option {
 			System.exit(0);
 		}
 	},
+	
+	MySort {
+		@Override
+		public String toString() {
+			return "Sort countries based on the year.";
+		}
+
+		@Override
+		void trigger() {
+			String year = UserInterface.askString("Choose a year: ");
+			String population = CsvParser.populations[UserInterface.askStrings("Choose the sampling population: ", CsvParser.populations)];
+			String features = CsvParser.features[UserInterface.askStrings("Choose a feature: ", CsvParser.features)];
+//			String country = UserInterface.askString("Choose the country: ").toLowerCase();
+			DataManager.singleton().sort(population, features, year);
+//			if(result != null)
+//				System.out.println(result);
+//			else
+//				System.err.println("Data not available!");
+		}
+	},
 
 	GetByKey {
 		@Override
