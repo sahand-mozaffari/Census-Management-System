@@ -7,8 +7,7 @@ public class UserInterface {
 
 	public static void run() {
 		while(true) {
-			askOptions("Enter command", new Option[]{Option.GetByKey, Option.SetByKey,Option.Chart, Option.MySort,
-					Option.Exit});
+			askOptions("Enter command", new Option[]{Option.GetByKey, Option.SetByKey,Option.Chart,  Option.MySort, Option.Lock, Option.Exit});
 		}
 	}
 
