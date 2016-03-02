@@ -66,7 +66,7 @@ enum Option {
 		void trigger() {
 			String population = CsvParser.populations[UserInterface.askStrings("Choose the sampling population: ", CsvParser.populations)];
 			String features = CsvParser.features[UserInterface.askStrings("Choose a feature: ", CsvParser.features)];
-			String country = UserInterface.askString("Choose the country: ").toLowerCase();;
+			String country = UserInterface.askString("Choose the country: ").toLowerCase();
 			String year = UserInterface.askString("Choose a year: ");
 			Number value = UserInterface.askNumber("Choose a year: ");
 			DataManager.singleton().put(population, features, country, year, value);
@@ -99,11 +99,23 @@ enum Option {
 				male[i - start] = DataManager.singleton().get(populationMale, features, country, String.valueOf(i));
 				female[i - start] = DataManager.singleton().get(populationFemale, features, country,String.valueOf(i));
 			}
-			CreateChartHelper.create(country, features, male, female);
+//			CreateChartHelper.create(country, features, male, female);
 			}catch(NullPointerException e){
 				System.err.println("Data not available!");
 			}
 		}
+	}, Lock {
+		@Override
+		public String toString() {
+			return "Lock a country.";
+		}
+
+		@Override
+		void trigger() {
+			String country = UserInterface.askString("Choose the country: ").toLowerCase().trim();
+			DataManager.singleton().set_update(country);
+		}
+		
 	};
 	
 
