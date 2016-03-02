@@ -1,9 +1,11 @@
 package data;
 
+import java.io.Serializable;
+
 /**
  * Created by sahand on 2/24/16.
  */
-class Key {
+class Key implements Serializable {
 	String population;
 	String feature;
 	String country;
