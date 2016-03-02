@@ -68,7 +68,7 @@ enum Option {
 			String features = CsvParser.features[UserInterface.askStrings("Choose a feature: ", CsvParser.features)];
 			String country = UserInterface.askString("Choose the country: ").toLowerCase();;
 			String year = UserInterface.askString("Choose a year: ");
-			Number value = UserInterface.askNumber("Choose a year: ");
+			Number value = UserInterface.askNumber("New value?: ");
 			DataManager.singleton().put(population, features, country, year, value);
 			System.out.println("Data was updated.");
 		}
